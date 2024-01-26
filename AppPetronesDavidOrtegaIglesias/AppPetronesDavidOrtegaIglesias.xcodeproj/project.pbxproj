@@ -25,6 +25,12 @@
 		630B974A2B6199D80048D8E6 /* UIImageView+Remote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630B97492B6199D80048D8E6 /* UIImageView+Remote.swift */; };
 		630B974B2B6199D80048D8E6 /* UIImageView+Remote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630B97492B6199D80048D8E6 /* UIImageView+Remote.swift */; };
 		630B974C2B6199D80048D8E6 /* UIImageView+Remote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630B97492B6199D80048D8E6 /* UIImageView+Remote.swift */; };
+		631BCB832B63CAC60069D4DF /* HeroTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631BCB812B63CAC60069D4DF /* HeroTableViewCell.swift */; };
+		631BCB842B63CAC60069D4DF /* HeroTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631BCB812B63CAC60069D4DF /* HeroTableViewCell.swift */; };
+		631BCB852B63CAC60069D4DF /* HeroTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631BCB812B63CAC60069D4DF /* HeroTableViewCell.swift */; };
+		631BCB862B63CAC60069D4DF /* HeroTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 631BCB822B63CAC60069D4DF /* HeroTableViewCell.xib */; };
+		631BCB872B63CAC60069D4DF /* HeroTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 631BCB822B63CAC60069D4DF /* HeroTableViewCell.xib */; };
+		631BCB882B63CAC60069D4DF /* HeroTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 631BCB822B63CAC60069D4DF /* HeroTableViewCell.xib */; };
 		637F584E2B5EF22F00F3EDEE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637F584D2B5EF22F00F3EDEE /* AppDelegate.swift */; };
 		637F58502B5EF22F00F3EDEE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637F584F2B5EF22F00F3EDEE /* SceneDelegate.swift */; };
 		637F585A2B5EF23100F3EDEE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 637F58582B5EF23100F3EDEE /* LaunchScreen.storyboard */; };
@@ -115,6 +121,8 @@
 		630B97412B618E9C0048D8E6 /* HeroDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroDetailViewController.swift; sourceTree = "<group>"; };
 		630B97422B618E9C0048D8E6 /* HeroDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeroDetailViewController.xib; sourceTree = "<group>"; };
 		630B97492B6199D80048D8E6 /* UIImageView+Remote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Remote.swift"; sourceTree = "<group>"; };
+		631BCB812B63CAC60069D4DF /* HeroTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroTableViewCell.swift; sourceTree = "<group>"; };
+		631BCB822B63CAC60069D4DF /* HeroTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeroTableViewCell.xib; sourceTree = "<group>"; };
 		637F584A2B5EF22F00F3EDEE /* AppPetronesDavidOrtegaIglesias.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppPetronesDavidOrtegaIglesias.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		637F584D2B5EF22F00F3EDEE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		637F584F2B5EF22F00F3EDEE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -185,6 +193,8 @@
 			children = (
 				630B97412B618E9C0048D8E6 /* HeroDetailViewController.swift */,
 				630B97422B618E9C0048D8E6 /* HeroDetailViewController.xib */,
+				631BCB812B63CAC60069D4DF /* HeroTableViewCell.swift */,
+				631BCB822B63CAC60069D4DF /* HeroTableViewCell.xib */,
 			);
 			path = HeroDetail;
 			sourceTree = "<group>";
@@ -506,6 +516,7 @@
 				637F58A12B5EFE7E00F3EDEE /* LoginViewController.xib in Resources */,
 				637F585A2B5EF23100F3EDEE /* LaunchScreen.storyboard in Resources */,
 				630B97462B618E9C0048D8E6 /* HeroDetailViewController.xib in Resources */,
+				631BCB862B63CAC60069D4DF /* HeroTableViewCell.xib in Resources */,
 				637F588F2B5EF3CA00F3EDEE /* SplashViewController.xib in Resources */,
 				637F587E2B5EF28200F3EDEE /* Assets.xcassets in Resources */,
 			);
@@ -517,6 +528,7 @@
 			files = (
 				637F58A22B5EFE7E00F3EDEE /* LoginViewController.xib in Resources */,
 				630B97472B618E9C0048D8E6 /* HeroDetailViewController.xib in Resources */,
+				631BCB872B63CAC60069D4DF /* HeroTableViewCell.xib in Resources */,
 				637F58B42B5F14B300F3EDEE /* HomeTableViewController.xib in Resources */,
 				637F58902B5EF3CA00F3EDEE /* SplashViewController.xib in Resources */,
 			);
@@ -528,6 +540,7 @@
 			files = (
 				637F58A32B5EFE7E00F3EDEE /* LoginViewController.xib in Resources */,
 				630B97482B618E9C0048D8E6 /* HeroDetailViewController.xib in Resources */,
+				631BCB882B63CAC60069D4DF /* HeroTableViewCell.xib in Resources */,
 				637F58B52B5F14B300F3EDEE /* HomeTableViewController.xib in Resources */,
 				637F58912B5EF3CA00F3EDEE /* SplashViewController.xib in Resources */,
 			);
@@ -559,6 +572,7 @@
 				63DC3E6B2B605B1200EC9D9C /* UserDefaultsHelper.swift in Sources */,
 				630B97342B6179190048D8E6 /* HeroDetailUseCase.swift in Sources */,
 				637F58A62B5F0B7B00F3EDEE /* LoginViewModel.swift in Sources */,
+				631BCB832B63CAC60069D4DF /* HeroTableViewCell.swift in Sources */,
 				637F58C02B5F195D00F3EDEE /* NetworkError.swift in Sources */,
 				630B973D2B6189B20048D8E6 /* HeroDetailViewModel.swift in Sources */,
 				637F58B72B5F17DB00F3EDEE /* LoginUseCase.swift in Sources */,
@@ -584,6 +598,7 @@
 				630B973E2B6189B20048D8E6 /* HeroDetailViewModel.swift in Sources */,
 				63DC3E642B604D7700EC9D9C /* HomeUseCase.swift in Sources */,
 				630B97392B6185630048D8E6 /* TransformationModel.swift in Sources */,
+				631BCB842B63CAC60069D4DF /* HeroTableViewCell.swift in Sources */,
 				637F589F2B5EFE7E00F3EDEE /* LoginViewController.swift in Sources */,
 				63DC3E6C2B605B1200EC9D9C /* UserDefaultsHelper.swift in Sources */,
 				630B97352B6179190048D8E6 /* HeroDetailUseCase.swift in Sources */,
@@ -618,6 +633,7 @@
 				63DC3E6D2B605B1200EC9D9C /* UserDefaultsHelper.swift in Sources */,
 				630B97362B6179190048D8E6 /* HeroDetailUseCase.swift in Sources */,
 				637F58A82B5F0B7B00F3EDEE /* LoginViewModel.swift in Sources */,
+				631BCB852B63CAC60069D4DF /* HeroTableViewCell.swift in Sources */,
 				637F58C22B5F195D00F3EDEE /* NetworkError.swift in Sources */,
 				630B973F2B6189B20048D8E6 /* HeroDetailViewModel.swift in Sources */,
 				637F58B92B5F17DB00F3EDEE /* LoginUseCase.swift in Sources */,

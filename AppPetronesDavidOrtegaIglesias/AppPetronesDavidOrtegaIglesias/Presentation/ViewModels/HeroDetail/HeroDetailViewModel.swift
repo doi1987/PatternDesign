@@ -31,7 +31,7 @@ final class HeroDetailViewModel {
 		
 		heroDetailUseCase.getHeroDetail(name: name) { [weak self] heroe in
 			DispatchQueue.main.async {
-				self?.heroe = heroe
+				self?.heroe = heroe.first
 				self?.heroDetailStatusLoad?(.loaded)
 			}
 		} onError: { [weak self] networkError in

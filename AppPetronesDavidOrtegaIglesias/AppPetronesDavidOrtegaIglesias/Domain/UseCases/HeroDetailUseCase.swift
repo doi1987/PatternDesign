@@ -10,13 +10,13 @@ import Foundation
 // MARK: - Protocolo Hero
 protocol  HeroDetailUseCaseProtocol {
 	func getTransformations(heroId: String, onSuccess: @escaping ([TransformationModel]) -> Void, onError: @escaping (NetworkError) -> Void)
-	func getHeroDetail(name: String, onSuccess: @escaping (HeroModel) -> Void, onError: @escaping (NetworkError) -> Void)
+	func getHeroDetail(name: String, onSuccess: @escaping ([HeroModel]) -> Void, onError: @escaping (NetworkError) -> Void)
 
 }
 
 // MARK: - Clase Hero Use Case
 final class HeroDetailUseCase: HeroDetailUseCaseProtocol {
-	func getHeroDetail(name: String, onSuccess: @escaping (HeroModel) -> Void, onError: @escaping (NetworkError) -> Void) {
+	func getHeroDetail(name: String, onSuccess: @escaping ([HeroModel]) -> Void, onError: @escaping (NetworkError) -> Void) {
 		
 		// Comprobar url
 		guard let url = URL(string: "\(EndPoints.url.rawValue)\(EndPoints.allHeros.rawValue)") else {
@@ -66,7 +66,7 @@ final class HeroDetailUseCase: HeroDetailUseCaseProtocol {
 				return
 			}
 			
-			guard let heroResponse = try? JSONDecoder().decode(HeroModel.self, from: data) else {
+			guard let heroResponse = try? JSONDecoder().decode([HeroModel].self, from: data) else {
 				onError(.decoding)
 				return
 			}
@@ -141,7 +141,7 @@ final class HeroDetailUseCase: HeroDetailUseCaseProtocol {
 
 // MARK: - Fake Success
 final class HeroDetailUseCaseFakeSuccess: HeroDetailUseCaseProtocol {
-	func getHeroDetail(name: String, onSuccess: @escaping (HeroModel) -> Void, onError: @escaping (NetworkError) -> Void) {
+	func getHeroDetail(name: String, onSuccess: @escaping ([HeroModel]) -> Void, onError: @escaping (NetworkError) -> Void) {
 		
 	}
 	
@@ -156,7 +156,7 @@ final class HeroDetailUseCaseFakeSuccess: HeroDetailUseCaseProtocol {
 }
 // MARK: - Fake Error
 final class HeroDetailUseCaseFakeError: HeroDetailUseCaseProtocol {
-	func getHeroDetail(name: String, onSuccess: @escaping (HeroModel) -> Void, onError: @escaping (NetworkError) -> Void) {
+	func getHeroDetail(name: String, onSuccess: @escaping ([HeroModel]) -> Void, onError: @escaping (NetworkError) -> Void) {
 		
 	}
 	
