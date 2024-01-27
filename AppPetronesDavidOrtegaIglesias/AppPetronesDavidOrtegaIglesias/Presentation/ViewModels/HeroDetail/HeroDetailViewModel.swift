@@ -14,9 +14,9 @@ final class HeroDetailViewModel {
 	
 	// Use Case
 	let heroDetailUseCase: HeroDetailUseCaseProtocol
-	// *******
+	
 	private let name: String
-	var heroe: HeroModel?
+	var hero: HeroModel?
 	var dataTransformations: [TransformationModel] = []
 	
 	// Init
@@ -29,10 +29,15 @@ final class HeroDetailViewModel {
 		// ******
 		heroDetailStatusLoad?(.loading)
 		
-		heroDetailUseCase.getHeroDetail(name: name) { [weak self] heroe in
+		heroDetailUseCase.getHeroDetail(name: name) { [weak self] hero in
 			DispatchQueue.main.async {
-				self?.heroe = heroe.first
-				self?.heroDetailStatusLoad?(.loaded)
+				guard let hero = hero.first else { 
+					self?.heroDetailStatusLoad?(.error(error: .noData))
+					return 
+				}
+				self?.hero = hero
+				self?.loadTransformations(heroId: hero.id)
+//				self?.heroDetailStatusLoad?(.loaded)
 			}
 		} onError: { [weak self] networkError in
 			DispatchQueue.main.async {
@@ -42,19 +47,21 @@ final class HeroDetailViewModel {
 	}
 	
 	// LLamada a getTransformations
-	func loadTransformations() {
-		heroDetailStatusLoad?(.loading)
-		
-		heroDetailUseCase.getTransformations(heroId: "") { [weak self] transformations in
+	func loadTransformations(heroId: String) {
+		heroDetailUseCase.getTransformations(heroId: heroId) { [weak self] transformations in
 			DispatchQueue.main.async {
 				self?.dataTransformations = transformations
 				self?.heroDetailStatusLoad?(.loaded)
-				
 			}
 		} onError: { networkError in
 			DispatchQueue.main.async {
 				self.heroDetailStatusLoad?(.error(error: networkError))
 			}
 		}
+	}
+	
+	func getHeroId() -> String? {
+		let heroId = hero?.id
+		return heroId
 	}
 }

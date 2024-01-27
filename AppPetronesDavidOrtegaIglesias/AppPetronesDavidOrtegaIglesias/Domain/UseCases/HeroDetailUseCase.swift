@@ -16,6 +16,7 @@ protocol  HeroDetailUseCaseProtocol {
 
 // MARK: - Clase Hero Use Case
 final class HeroDetailUseCase: HeroDetailUseCaseProtocol {
+	
 	func getHeroDetail(name: String, onSuccess: @escaping ([HeroModel]) -> Void, onError: @escaping (NetworkError) -> Void) {
 		
 		// Comprobar url
@@ -142,7 +143,10 @@ final class HeroDetailUseCase: HeroDetailUseCaseProtocol {
 // MARK: - Fake Success
 final class HeroDetailUseCaseFakeSuccess: HeroDetailUseCaseProtocol {
 	func getHeroDetail(name: String, onSuccess: @escaping ([HeroModel]) -> Void, onError: @escaping (NetworkError) -> Void) {
-		
+		DispatchQueue.main.asyncAfter(deadline: .now() + 3){
+			let hero = [HeroModel(id: "1", name: "Goku", description: "descr", photo: "", favorite: true), HeroModel(id: "2", name: "Vegeta", description: "des", photo: "", favorite: false), HeroModel(id: "3", name: "Bulma", description: "desc", photo: "", favorite: true)]
+			onSuccess(hero)
+		}
 	}
 	
 	func getTransformations(heroId: String, onSuccess: @escaping ([TransformationModel]) -> Void, onError: @escaping (NetworkError) -> Void) {
@@ -154,10 +158,13 @@ final class HeroDetailUseCaseFakeSuccess: HeroDetailUseCaseProtocol {
 		}
 	}
 }
+
 // MARK: - Fake Error
 final class HeroDetailUseCaseFakeError: HeroDetailUseCaseProtocol {
 	func getHeroDetail(name: String, onSuccess: @escaping ([HeroModel]) -> Void, onError: @escaping (NetworkError) -> Void) {
-		
+		DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+			onError(.noData)
+		}
 	}
 	
 	func getTransformations(heroId: String, onSuccess: @escaping ([TransformationModel]) -> Void, onError: @escaping (NetworkError) -> Void) {

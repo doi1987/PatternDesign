@@ -48,7 +48,7 @@
                     <state key="normal" title="Button"/>
                     <buttonConfiguration key="configuration" style="filled" title="Transformaciones"/>
                     <connections>
-                        <action selector="didTapTransformationButton:" destination="-1" eventType="touchUpInside" id="Zty-Cd-wFJ"/>
+                        <action selector="didTapTransformationButton:" destination="-1" eventType="touchUpInside" id="7oV-NM-JzG"/>
                     </connections>
                 </button>
             </subviews>

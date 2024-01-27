@@ -17,6 +17,7 @@ class HeroDetailViewController: UIViewController {
 	
 	// MARK: - View Model
 	private let heroDetailViewModel: HeroDetailViewModel
+	private let transformations: [TransformationTableViewModel] = []
 	
 	// MARK: - Init
 	// ******* Valor por defecto
@@ -33,8 +34,16 @@ class HeroDetailViewController: UIViewController {
 	// MARK: - Lifecycle
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		transformationButton.isHidden = true
 		heroDetailViewModel.loadDetail()
 		setObservers()
+	}
+	
+	// MARK: - Action
+	@IBAction func didTapTransformationButton(_ sender: Any) {
+		let nextVM = TransformationTableViewModel(heroId: heroDetailViewModel.getHeroId(), transformationUseCase: TransformationTableUseCase)
+		let nextVC = TransformationTableViewController(transformationTableViewModel: nextVM)
+		navigationController?.show(nextVC, sender: nil)
 	}
 	
 	// MARK: - Conectar Variable Estado ViewModel
@@ -57,12 +66,16 @@ class HeroDetailViewController: UIViewController {
 
 private extension HeroDetailViewController {
 	func setupView() {
-		heroName.text = heroDetailViewModel.heroe?.name
-		heroDescription.text = heroDetailViewModel.heroe?.description
-		guard let imageUrlString = heroDetailViewModel.heroe?.photo,
+		// **** Is loading??
+		heroName.text = heroDetailViewModel.hero?.name
+		heroDescription.text = heroDetailViewModel.hero?.description
+		heroImage.image = UIImage(named: "placeholder")
+		
+		guard let imageUrlString = heroDetailViewModel.hero?.photo,
 			  let imageURL = URL(string: imageUrlString) else {
 			return
 		}
-		heroImage.setImage(url: imageURL)
+		heroImage.setImage(url: imageURL)		
+		transformationButton.isHidden = heroDetailViewModel.dataTransformations.isEmpty
 	}
 }

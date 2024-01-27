@@ -24,7 +24,6 @@ final class HomeViewModel {
 	
 	// MARK: - GetHeroes
 	func loadHeroes() {
-		// ******
 		homeStatusLoad?(.loading)
 		
 		homeUseCase.getHeroes { [weak self] heroes in
