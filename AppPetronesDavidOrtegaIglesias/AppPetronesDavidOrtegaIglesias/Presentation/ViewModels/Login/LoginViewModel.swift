@@ -39,12 +39,12 @@ final class LoginViewModel {
 	}
 	
 	// Check email
-	private func isValid(email: String) -> Bool {
+	func isValid(email: String) -> Bool {
 		email.isEmpty == false && email.contains("@")
 	}
 	
 	// Check password
-	private func isValid(password: String) -> Bool {
+	func isValid(password: String) -> Bool {
 		password.isEmpty == false && password.count >= 4
 	}
 	

@@ -6,6 +6,10 @@
 //
 
 import UIKit
+enum TextFieldIdentifier: Int {
+	case email = 0
+	case password = 1
+}
 
 class LoginViewController: UIViewController {
 	// MARK: - Outlets
@@ -30,6 +34,10 @@ class LoginViewController: UIViewController {
 	// MARK: - Lifecycle
 	override func viewDidLoad() {
         super.viewDidLoad()
+		emailTextField.delegate = self
+		passwordTextField.delegate = self
+		emailTextField.tag = TextFieldIdentifier.email.rawValue
+		passwordTextField.tag = TextFieldIdentifier.password.rawValue
 		setLoginData()
 		setObservers()
     }
@@ -96,3 +104,20 @@ private extension LoginViewController {
 	}
 }
 #endif
+
+extension LoginViewController: UITextFieldDelegate {	
+	func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+		guard let text = textField.text, let textRange = Range(range, in: text) else { return false }		
+
+		let updatedText = text.replacingCharacters(in: textRange, with: string)
+			
+		switch textField.tag {
+		case TextFieldIdentifier.email.rawValue:
+			errorEmail.isHidden = viewModel.isValid(email: updatedText)
+		case TextFieldIdentifier.password.rawValue:
+			errorPassword.isHidden = viewModel.isValid(password: updatedText)
+		default: break
+		}
+		return true
+	}
+}
