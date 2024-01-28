@@ -34,10 +34,8 @@ class LoginViewController: UIViewController {
 	// MARK: - Lifecycle
 	override func viewDidLoad() {
         super.viewDidLoad()
-		emailTextField.delegate = self
-		passwordTextField.delegate = self
-		emailTextField.tag = TextFieldIdentifier.email.rawValue
-		passwordTextField.tag = TextFieldIdentifier.password.rawValue
+		emailTextField.addTarget(self, action: #selector(validEmail(_:)), for: .editingChanged)
+		passwordTextField.addTarget(self, action: #selector(validPassword(_:)), for: .editingChanged)
 		setLoginData()
 		setObservers()
     }
@@ -45,6 +43,17 @@ class LoginViewController: UIViewController {
 	// MARK: - Action
 	@IBAction func onLoginButtonTap(_ sender: Any) {
 		viewModel.onLoginButton(email: emailTextField.text, password: passwordTextField.text)
+	}
+	@objc func validEmail(_ sender: UITextField) {
+		guard let text = sender.text else { return }
+
+		errorEmail.isHidden = viewModel.isValid(email: text)
+	}
+
+	@objc func validPassword(_ sender: UITextField) {
+		guard let text = sender.text else { return }
+
+		errorPassword.isHidden = viewModel.isValid(password: text)
 	}
 }
 
@@ -64,7 +73,6 @@ extension LoginViewController {
 				
 			case .showErrorEmail(let error):
 				self?.errorEmail.text = error
-				//**** Arreglar que se quede el error 
 				self?.errorEmail.isHidden = (error == nil || error?.isEmpty == true)
 				
 			case .showErrorPassword(let error):
@@ -105,19 +113,3 @@ private extension LoginViewController {
 }
 #endif
 
-extension LoginViewController: UITextFieldDelegate {	
-	func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-		guard let text = textField.text, let textRange = Range(range, in: text) else { return false }		
-
-		let updatedText = text.replacingCharacters(in: textRange, with: string)
-			
-		switch textField.tag {
-		case TextFieldIdentifier.email.rawValue:
-			errorEmail.isHidden = viewModel.isValid(email: updatedText)
-		case TextFieldIdentifier.password.rawValue:
-			errorPassword.isHidden = viewModel.isValid(password: updatedText)
-		default: break
-		}
-		return true
-	}
-}
