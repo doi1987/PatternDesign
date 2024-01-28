@@ -20,7 +20,6 @@ class HeroDetailViewController: UIViewController {
 	private let transformations: [TransformationTableViewModel] = []
 	
 	// MARK: - Init
-	// ******* Valor por defecto
 	init(heroDetailViewModel: HeroDetailViewModel) {
 		self.heroDetailViewModel = heroDetailViewModel
 		super.init(nibName: nil, bundle: nil)
@@ -41,7 +40,9 @@ class HeroDetailViewController: UIViewController {
 	
 	// MARK: - Action
 	@IBAction func didTapTransformationButton(_ sender: Any) {
-		let nextVM = TransformationTableViewModel(heroId: heroDetailViewModel.getHeroId(), transformationUseCase: TransformationTableUseCase)
+		guard let heroId = heroDetailViewModel.getHeroId() else { return }
+		
+		let nextVM = TransformationTableViewModel(heroId: heroId, transformationUseCase: TransformationTableUseCase())
 		let nextVC = TransformationTableViewController(transformationTableViewModel: nextVM)
 		navigationController?.show(nextVC, sender: nil)
 	}
@@ -66,7 +67,6 @@ class HeroDetailViewController: UIViewController {
 
 private extension HeroDetailViewController {
 	func setupView() {
-		// **** Is loading??
 		heroName.text = heroDetailViewModel.hero?.name
 		heroDescription.text = heroDetailViewModel.hero?.description
 		heroImage.image = UIImage(named: "placeholder")

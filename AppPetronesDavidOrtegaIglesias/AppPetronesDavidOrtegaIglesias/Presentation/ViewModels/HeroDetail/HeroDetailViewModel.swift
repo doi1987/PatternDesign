@@ -13,16 +13,18 @@ final class HeroDetailViewModel {
 	var heroDetailStatusLoad: ((SplashStatusLoad) -> Void)?
 	
 	// Use Case
-	let heroDetailUseCase: HeroDetailUseCaseProtocol
+	private let heroDetailUseCase: HeroDetailUseCaseProtocol
+	private let transformationsUseCase: TransformationTableUseCaseProtocol
 	
 	private let name: String
 	var hero: HeroModel?
 	var dataTransformations: [TransformationModel] = []
 	
 	// Init
-	init(name: String, heroDetailUseCase: HeroDetailUseCaseProtocol = HeroDetailUseCase()) {
+	init(name: String, heroDetailUseCase: HeroDetailUseCaseProtocol = HeroDetailUseCase(), transformationsUseCase: TransformationTableUseCase) {
 		self.name = name
 		self.heroDetailUseCase = heroDetailUseCase
+		self.transformationsUseCase = transformationsUseCase
 	}
 	
 	func loadDetail() {
@@ -48,7 +50,7 @@ final class HeroDetailViewModel {
 	
 	// LLamada a getTransformations
 	func loadTransformations(heroId: String) {
-		heroDetailUseCase.getTransformations(heroId: heroId) { [weak self] transformations in
+		transformationsUseCase.getTransformations(heroId: heroId) { [weak self] transformations in
 			DispatchQueue.main.async {
 				self?.dataTransformations = transformations
 				self?.heroDetailStatusLoad?(.loaded)
