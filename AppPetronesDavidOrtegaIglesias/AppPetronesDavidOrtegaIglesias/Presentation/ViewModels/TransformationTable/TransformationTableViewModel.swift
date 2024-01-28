@@ -30,7 +30,7 @@ final class TransformationTableViewModel {
 		
 		transformationUseCase.getTransformations(heroId: heroId) { [weak self] transformations in
 			DispatchQueue.main.async {
-				self?.dataTransformations = transformations
+				self?.dataTransformations = transformations.sorted()
 				self?.transformationStatusLoad?(.loaded)
 			}
 		} onError: { [weak self] networkError in

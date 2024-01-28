@@ -52,7 +52,7 @@ final class HeroDetailViewModel {
 	func loadTransformations(heroId: String) {
 		transformationsUseCase.getTransformations(heroId: heroId) { [weak self] transformations in
 			DispatchQueue.main.async {
-				self?.dataTransformations = transformations
+				self?.dataTransformations = transformations.sorted()
 				self?.heroDetailStatusLoad?(.loaded)
 			}
 		} onError: { networkError in
