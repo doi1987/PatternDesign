@@ -66,7 +66,7 @@
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k9n-gw-LtX">
                     <rect key="frame" x="20" y="733.66666666666663" width="353" height="34.333333333333371"/>
                     <state key="normal" title="Button"/>
-                    <buttonConfiguration key="configuration" style="filled" title="Button"/>
+                    <buttonConfiguration key="configuration" style="filled" title="Continuar"/>
                     <connections>
                         <action selector="onLoginButtonTap:" destination="-1" eventType="touchUpInside" id="ifw-aL-rVX"/>
                     </connections>

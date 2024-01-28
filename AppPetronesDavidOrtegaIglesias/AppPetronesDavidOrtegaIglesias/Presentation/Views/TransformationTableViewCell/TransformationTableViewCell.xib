@@ -16,7 +16,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="450" height="116"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="UKK-1g-lD2" userLabel="transformationImage">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="UKK-1g-lD2" userLabel="transformationImage">
                         <rect key="frame" x="8" y="8" width="150" height="84"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="150" id="J8x-cs-aUW"/>
