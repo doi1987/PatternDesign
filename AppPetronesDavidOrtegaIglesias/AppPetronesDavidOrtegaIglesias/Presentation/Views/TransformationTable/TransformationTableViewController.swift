@@ -31,7 +31,7 @@ class TransformationTableViewController: UIViewController {
 		super.viewDidLoad()
 		tableView.delegate = self
 		tableView.dataSource = self
-		tableView.register(UITableViewCell.self, forCellReuseIdentifier: "TransformationCell")
+		tableView.register(UINib(nibName: TransformationTableViewCell.nibName, bundle: nil).self, forCellReuseIdentifier: TransformationTableViewCell.identifier)
 		transformationTableViewModel.loadTransformations()
 		setObservers()
 	}
@@ -58,6 +58,9 @@ class TransformationTableViewController: UIViewController {
 extension TransformationTableViewController: UITableViewDelegate {
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		// TODO: Navegar al detail
+		let nextVM = TransformationDetailViewModel(transformationDetail: transformationTableViewModel.dataTransformations[indexPath.row])
+		let nextVC = TransformationDetailViewController(transformationDetailViewModel: nextVM)
+			navigationController?.show(nextVC, sender: nil)
 	}
 }
 
@@ -68,8 +71,8 @@ extension TransformationTableViewController: UITableViewDataSource {
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		let cell = tableView.dequeueReusableCell(withIdentifier: "TransformationCell", for: indexPath)
-		cell.textLabel?.text = transformationTableViewModel.dataTransformations[indexPath.row].name
+		guard let cell = tableView.dequeueReusableCell(withIdentifier: TransformationTableViewCell.identifier) as? TransformationTableViewCell else { return UITableViewCell()}
+		cell.configure(with: transformationTableViewModel.dataTransformations[indexPath.row])
 		return cell
 	}
 } 

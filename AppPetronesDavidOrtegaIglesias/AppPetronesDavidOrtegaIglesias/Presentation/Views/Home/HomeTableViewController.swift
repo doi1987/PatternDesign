@@ -30,11 +30,10 @@ class HomeTableViewController: UIViewController {
         super.viewDidLoad()	
 		tableViewOutlet.delegate = self
 		tableViewOutlet.dataSource = self
-		tableViewOutlet.register(UITableViewCell.self, forCellReuseIdentifier: "HomeCell")
-//		tableViewOutlet.register(
-//			UINib(
-//				nibName: HeroTableViewCell.nibName, 
-//				bundle: nil), forCellReuseIdentifier: HeroTableViewCell.identifier)
+		tableViewOutlet.register(
+			UINib(
+				nibName: HeroTableViewCell.nibName, 
+				bundle: nil), forCellReuseIdentifier: HeroTableViewCell.identifier)
 		homeViewModel.loadHeroes()
 		setObservers()
     }
@@ -61,7 +60,7 @@ class HomeTableViewController: UIViewController {
 extension HomeTableViewController: UITableViewDelegate {
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		
-		let nextVM = HeroDetailViewModel(name: homeViewModel.dataHeroes[indexPath.row].name, heroDetailUseCase: HeroDetailUseCase())
+		let nextVM = HeroDetailViewModel(name: homeViewModel.dataHeroes[indexPath.row].name, heroDetailUseCase: HeroDetailUseCase(), transformationsUseCase: TransformationTableUseCase())
 		let nextVC = HeroDetailViewController(heroDetailViewModel: nextVM)
 			navigationController?.show(nextVC, sender: nil)
 	}
@@ -76,8 +75,9 @@ extension HomeTableViewController: UITableViewDataSource {
 	
 	// Formato de la celda
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		let cell = tableViewOutlet.dequeueReusableCell(withIdentifier: "HomeCell", for: indexPath)
-		cell.textLabel?.text = homeViewModel.dataHeroes[indexPath.row].name
+		guard let cell = tableViewOutlet.dequeueReusableCell(withIdentifier: HeroTableViewCell.identifier, for: indexPath) as? HeroTableViewCell else { return UITableViewCell() }
+		
+		cell.configure(with: homeViewModel.dataHeroes[indexPath.row])
 		return cell
 	}
 }
