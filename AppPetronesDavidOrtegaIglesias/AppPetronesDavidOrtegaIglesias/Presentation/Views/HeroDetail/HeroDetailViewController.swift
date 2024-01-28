@@ -15,6 +15,8 @@ class HeroDetailViewController: UIViewController {
 	@IBOutlet weak var heroDescription: UILabel!
 	@IBOutlet weak var transformationButton: UIButton!
 	
+	@IBOutlet weak var loadingView: UIView!
+	
 	// MARK: - View Model
 	private let heroDetailViewModel: HeroDetailViewModel
 	private let transformations: [TransformationTableViewModel] = []
@@ -52,12 +54,12 @@ class HeroDetailViewController: UIViewController {
 		heroDetailViewModel.heroDetailStatusLoad = { [weak self] status in
 			switch status {
 			case .loading:
-				// ******* mostrar imagen custom (placeholder)
-				print("Hero Detail Loading")
+				self?.loadingView.isHidden = false
 			case .loaded:
+				self?.loadingView.isHidden = true
 				self?.setupView()
 			case .error(let error):
-				print(error)
+				self?.loadingView.isHidden = true
 			case .none:
 				print("Hero Detail None")
 			}

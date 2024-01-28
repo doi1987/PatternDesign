@@ -28,7 +28,6 @@ final class HeroDetailViewModel {
 	}
 	
 	func loadDetail() {
-		// ******
 		heroDetailStatusLoad?(.loading)
 		
 		heroDetailUseCase.getHeroDetail(name: name) { [weak self] hero in
@@ -39,7 +38,6 @@ final class HeroDetailViewModel {
 				}
 				self?.hero = hero
 				self?.loadTransformations(heroId: hero.id)
-//				self?.heroDetailStatusLoad?(.loaded)
 			}
 		} onError: { [weak self] networkError in
 			DispatchQueue.main.async {

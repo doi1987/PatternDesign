@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum NetworkError {
+enum NetworkError: Equatable {
 	case malformedURL
 	case dataFormatting
 	case other

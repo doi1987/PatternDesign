@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TransformationTableViewController" customModule="AppPetronesDavidOrtegaIglesias" customModuleProvider="target">
             <connections>
+                <outlet property="loadingView" destination="U83-S3-G2S" id="eAo-UW-4CE"/>
                 <outlet property="tableView" destination="gNc-sW-7F4" id="GxK-DL-2Xf"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -23,13 +24,30 @@
                     <rect key="frame" x="0.0" y="59" width="393" height="759"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
+                <view alpha="0.59999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U83-S3-G2S">
+                    <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                    <subviews>
+                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="0tX-h2-vCJ">
+                            <rect key="frame" x="178" y="361" width="37" height="37"/>
+                        </activityIndicatorView>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="0tX-h2-vCJ" firstAttribute="centerX" secondItem="U83-S3-G2S" secondAttribute="centerX" id="CXH-q2-euB"/>
+                        <constraint firstItem="0tX-h2-vCJ" firstAttribute="centerY" secondItem="U83-S3-G2S" secondAttribute="centerY" id="he1-KR-nbv"/>
+                    </constraints>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="gNc-sW-7F4" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="2r2-b1-hxg"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="U83-S3-G2S" secondAttribute="bottom" id="5rc-5q-saG"/>
                 <constraint firstItem="gNc-sW-7F4" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="AfX-n8-tnG"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="gNc-sW-7F4" secondAttribute="bottom" id="Hcy-VZ-yc0"/>
+                <constraint firstItem="U83-S3-G2S" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Syu-fA-hQe"/>
+                <constraint firstItem="U83-S3-G2S" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="UaC-Jl-aDd"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="U83-S3-G2S" secondAttribute="trailing" id="Uji-pa-PWg"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="gNc-sW-7F4" secondAttribute="trailing" id="v2d-hp-6lI"/>
             </constraints>
             <point key="canvasLocation" x="466" y="74"/>

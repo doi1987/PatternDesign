@@ -11,6 +11,7 @@ class HomeTableViewController: UIViewController {
 
 	// MARK: - Outlets
 	@IBOutlet weak var tableViewOutlet: UITableView!
+	@IBOutlet weak var loadingView: UIView!
 	
 	// MARK: - View Model
 	private var homeViewModel: HomeViewModel
@@ -43,12 +44,12 @@ class HomeTableViewController: UIViewController {
 		homeViewModel.homeStatusLoad = { [weak self] status in
 			switch status {
 			case .loading:
-				// ******* mostrar imagen custom (placeholder)
-				print("Home Loading")
+				self?.loadingView.isHidden = false
 			case .loaded:
+				self?.loadingView.isHidden = true
 				self?.tableViewOutlet.reloadData()
 			case .error(let error):
-				print(error)
+				self?.loadingView.isHidden = true
 			case .none:
 				print("Home None")
 			}

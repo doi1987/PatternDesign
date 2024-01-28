@@ -13,6 +13,7 @@
                 <outlet property="heroDescription" destination="M6I-nm-Pp1" id="TnB-dv-WQT"/>
                 <outlet property="heroImage" destination="uzc-86-H7H" id="DWR-5s-nNj"/>
                 <outlet property="heroName" destination="XX7-cI-mvA" id="Vju-Z5-iMr"/>
+                <outlet property="loadingView" destination="8E0-d4-3BA" id="WpR-i3-sFk"/>
                 <outlet property="transformationButton" destination="3Po-vC-Pku" id="AMX-R7-vxZ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -51,21 +52,38 @@
                         <action selector="didTapTransformationButton:" destination="-1" eventType="touchUpInside" id="7oV-NM-JzG"/>
                     </connections>
                 </button>
+                <view alpha="0.59999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8E0-d4-3BA">
+                    <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                    <subviews>
+                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="HZV-gG-Gth">
+                            <rect key="frame" x="178" y="361" width="37" height="37"/>
+                        </activityIndicatorView>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="HZV-gG-Gth" firstAttribute="centerY" secondItem="8E0-d4-3BA" secondAttribute="centerY" id="FVR-y6-Ojj"/>
+                        <constraint firstItem="HZV-gG-Gth" firstAttribute="centerX" secondItem="8E0-d4-3BA" secondAttribute="centerX" id="maf-Oq-qrj"/>
+                    </constraints>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="XX7-cI-mvA" firstAttribute="top" secondItem="uzc-86-H7H" secondAttribute="bottom" constant="32" id="4aw-jY-hBL"/>
                 <constraint firstItem="M6I-nm-Pp1" firstAttribute="top" secondItem="XX7-cI-mvA" secondAttribute="bottom" constant="16" id="ANL-sh-RBw"/>
+                <constraint firstItem="8E0-d4-3BA" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Cqk-i8-HFV"/>
                 <constraint firstItem="M6I-nm-Pp1" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="DCe-Ya-1FE"/>
                 <constraint firstItem="uzc-86-H7H" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="JiM-Vk-2ib"/>
                 <constraint firstItem="3Po-vC-Pku" firstAttribute="top" relation="greaterThanOrEqual" secondItem="M6I-nm-Pp1" secondAttribute="bottom" constant="32" id="Kqd-Ql-z9g"/>
+                <constraint firstItem="8E0-d4-3BA" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="ODo-Hk-N7o"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="uzc-86-H7H" secondAttribute="trailing" id="P4m-pY-Cd9"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="XX7-cI-mvA" secondAttribute="trailing" constant="16" id="Rqd-EA-3bF"/>
                 <constraint firstItem="XX7-cI-mvA" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="ULz-Ry-xsX"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="3Po-vC-Pku" secondAttribute="bottom" constant="16" id="bwI-xc-LLq"/>
                 <constraint firstItem="uzc-86-H7H" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="eAt-yn-U74"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="3Po-vC-Pku" secondAttribute="trailing" constant="16" id="hXo-ut-nxv"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="8E0-d4-3BA" secondAttribute="bottom" id="lf3-jf-EN2"/>
+                <constraint firstItem="8E0-d4-3BA" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="mbl-gP-N2x"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="M6I-nm-Pp1" secondAttribute="trailing" constant="16" id="p1a-m3-ITa"/>
                 <constraint firstItem="3Po-vC-Pku" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="qeE-r6-xlB"/>
             </constraints>

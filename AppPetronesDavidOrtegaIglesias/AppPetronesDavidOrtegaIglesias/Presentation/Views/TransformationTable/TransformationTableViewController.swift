@@ -12,6 +12,8 @@ class TransformationTableViewController: UIViewController {
 	// MARK: - Outlet
 	@IBOutlet weak var tableView: UITableView!
 	
+	@IBOutlet weak var loadingView: UIView!
+	
 	// MARK: - Model
 	private var transformationTableViewModel: TransformationTableViewModel
 	
@@ -41,11 +43,11 @@ class TransformationTableViewController: UIViewController {
 		transformationTableViewModel.transformationStatusLoad = { [weak self] status in
 			switch status {
 			case .loading:
-				print("Home Loading")
-			case .loaded:
+				self?.loadingView.isHidden = false			case .loaded:
+				self?.loadingView.isHidden = true
 				self?.tableView.reloadData()
 			case .error(let error):
-				print(error)
+				self?.loadingView.isHidden = true
 			case .none:
 				print("Home None")
 			}
@@ -57,7 +59,6 @@ class TransformationTableViewController: UIViewController {
 // MARK: - Delegate
 extension TransformationTableViewController: UITableViewDelegate {
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		// TODO: Navegar al detail
 		let nextVM = TransformationDetailViewModel(transformationDetail: transformationTableViewModel.dataTransformations[indexPath.row])
 		let nextVC = TransformationDetailViewController(transformationDetailViewModel: nextVM)
 			navigationController?.show(nextVC, sender: nil)

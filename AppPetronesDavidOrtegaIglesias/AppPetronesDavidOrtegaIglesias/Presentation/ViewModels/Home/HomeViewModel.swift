@@ -12,7 +12,7 @@ final class HomeViewModel {
 	// MARK: - Binding con UI
 	var homeStatusLoad: ((SplashStatusLoad) -> Void)?
 	
-	// case Use
+	// MARK: - Use Case
 	let homeUseCase: HomeUseCaseProtocol
 	
 	var dataHeroes: [HeroModel] = []

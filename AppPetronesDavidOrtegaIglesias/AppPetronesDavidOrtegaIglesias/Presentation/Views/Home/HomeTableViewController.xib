@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeTableViewController" customModule="AppPetronesDavidOrtegaIglesias" customModuleProvider="target">
             <connections>
+                <outlet property="loadingView" destination="wyK-Q9-NEJ" id="aoP-8a-hAe"/>
                 <outlet property="tableViewOutlet" destination="PZY-rf-HlJ" id="TTX-1Q-7gS"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -23,11 +24,28 @@
                     <rect key="frame" x="0.0" y="59" width="393" height="759"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
+                <view alpha="0.59999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wyK-Q9-NEJ">
+                    <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                    <subviews>
+                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="hfI-fg-YPu">
+                            <rect key="frame" x="178" y="361" width="37" height="37"/>
+                        </activityIndicatorView>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="hfI-fg-YPu" firstAttribute="centerX" secondItem="wyK-Q9-NEJ" secondAttribute="centerX" id="eW5-H1-s9a"/>
+                        <constraint firstItem="hfI-fg-YPu" firstAttribute="centerY" secondItem="wyK-Q9-NEJ" secondAttribute="centerY" id="m1G-vZ-K5A"/>
+                    </constraints>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="PZY-rf-HlJ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="6gJ-O5-8Bt"/>
+                <constraint firstItem="wyK-Q9-NEJ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="IfG-zh-Kjq"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="wyK-Q9-NEJ" secondAttribute="bottom" id="R7V-j2-6Uy"/>
+                <constraint firstItem="wyK-Q9-NEJ" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="Vbd-DL-CFf"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="wyK-Q9-NEJ" secondAttribute="trailing" id="WZd-Nb-twt"/>
                 <constraint firstItem="PZY-rf-HlJ" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="Xsz-gr-LSN"/>
                 <constraint firstItem="PZY-rf-HlJ" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="fuh-9u-76o"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="PZY-rf-HlJ" secondAttribute="bottom" id="noM-DX-q8x"/>
